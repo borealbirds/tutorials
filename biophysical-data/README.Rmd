@@ -1,0 +1,217 @@
+BAM's Environmental Data
+=============
+
+## Datasets
+
+Three options to view lists of environmental / biophysical datasets used in BAM analyses. 
+
+1. [BAM website](http://www.borealbirds.ca/index.php/biophysical_data) - Highlights the major products used up to 2012.
+2. [Test Wiki](https://sites.google.com/site/bambiophysical/) describing biophysical data we have used or might use - last updated 2017, but incomplete
+3. BAM's GeoNetwork data catalog -- currently **under construction**. Expected 2018. 
+
+## Variables
+
+### OFFSET VARIABLES
+
+---
+
+#### DSLS
+
+**Explanation**: Days since local spring
+
+**Derived from**: Spring?????
+
+**EXAMPLE CODE**
+
+``` {r, echo=T, eval=F}
+SS_sprng <- read.csv("e:/peter/bam/May2015/NRCAN_SG_001_BAMBBS2015_71_13.csv") #load intersected file acquired from Trish
+SS_sprng <- SS_sprng[,c("SS","RASTERVALU")] #subset for necessary 2 columns
+SS_sprng$SPRNG <- SS_sprng$RASTERVALU 
+levels(SS_sprng$SPRNG) <- gsub(",", "", levels(SS_sprng$SPRNG))
+SS_sprng$SPRNG <- as.numeric(as.character(SS_sprng$SPRNG))
+SS_sprng$SPRNG[SS_sprng$SPRNG < 0] <- NA
+rownames(SS_sprng) <- SS_sprng$SS
+SS_sprng <- SS_sprng[rownames(SS01),]
+
+# some intermediate code not included here
+
+DSLS <- (offdat$JULIAN - offdat$ss_sprng) / 365
+```
+
+---
+
+#### JDAY
+
+**Explanation**: Julian day / 365
+
+**Derived from**: MM (month), DAY (day) -- both come from original data. If a survey doesn't have month and day, we can't calculate offsets. 
+
+**EXAMPLE CODE**
+
+``` {r eval=F, echo=T}
+DD <- with(PKEY, paste0(YEAR, "-", MM, "-", DAY, " ", HH, ":", mm, ":00")) # combine date and time pieces back together
+DD <- strptime(DD, "%Y-%m-%e %H:%M:%S") # Convert date to POSIXct.
+PKEY$DATE <- DD
+## Julian day
+PKEY$JULIAN <- DD$yday # extract Julian (ordinal) day
+
+PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
+```
+
+---
+
+#### LCC4Conif
+
+**Explanation**: Indicator variable – if habitat is coniferous 
+
+**Derived from**: LCC4. LCC4 is derived from [NALCMS landcover](https://sites.google.com/site/bambiophysical/home/landcover/modis-land-cover-map-of-canada-2005) 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### LCC4Open
+
+**Explanation**: Indicator variable – if habitat is open
+
+**Derived from**: LCC4. LCC4 is derived from [NALCMS landcover](https://sites.google.com/site/bambiophysical/home/landcover/modis-land-cover-map-of-canada-2005) 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### LCC2OpenWet
+
+**Explanation**: Indicator variable - if habitat is open or wet
+
+**Derived from**: LCC2. LCC2 is derived from [NALCMS landcover](https://sites.google.com/site/bambiophysical/home/landcover/modis-land-cover-map-of-canada-2005) 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### LCC4Wet
+**Explanation**: Indicator variable – if habitat is wet (from LCC4)
+
+**Derived from**: LCC2. LCC2 is derived from [NALCMS landcover](https://sites.google.com/site/bambiophysical/home/landcover/modis-land-cover-map-of-canada-2005) 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### MAXDIS
+
+**Explanation**: Maximum distance band for point count in m, divided by 100
+
+**Derived from**: MASDIST, joined to a PKEY via METHOD. METHOD supplied in raw survey methodology
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### TREE
+
+**Explanation**: Percent tree cover
+
+**Derived from**: Intersection with a tree cover layer -- which one??
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+#### TSSR
+
+**Explanation**: Time since sunrise (requires time zone)
+
+**Derived from**: HH (hour), MIN (minute), time zone
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+
+### LANDCOVER VARIABLES
+
+#### LCC05
+
+**Explanation**: 
+
+**Derived from**: 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### LCC2
+
+**Explanation**: 
+
+**Derived from**: 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+#### LCC4
+
+**Explanation**: 
+
+**Derived from**: 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+
+### METHODOLOGICAL VARIABLES
+
+#### ROAD
+
+**Explanation**: 
+
+**Derived from**: 
+
+**EXAMPLE CODE**
+
+``` {r}
+# to be filled in later
+```
+
+---
+
+
+
