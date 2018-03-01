@@ -3,7 +3,7 @@ Overall BAM Modelling Workflow
 
 Adapted from Peter Solymos' [description](https://github.com/borealbirds/foam/blob/master/README.md).
 
-![BAM Model Workflow](https://github.com/borealbirds/CommonScripts/blob/master/Fig.BAMModelBuildingWorkflow-overall.png "BAM Model Workflow")
+![BAM Model Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/Fig.BAMModelBuildingWorkflow-overall.png  "BAM Model Workflow")
 
 
 Core BAM modelling approach consists of the following steps
