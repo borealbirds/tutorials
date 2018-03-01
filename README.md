@@ -24,8 +24,9 @@ Each tutorial below explains a particular data processing/analysis step in the [
 
 ### Data Processing
 
-* [Testing ODBC-to-R connection](https://github.com/borealbirds/tutorials/blob/master/testing-odbc-to-r-connection/testing-odbc-to-r-connection.md)
-* [Fetch data from SQL server](https://github.com/borealbirds/tutorials/blob/master/fetch-data-from-sql-server-to-r/README.Rmd)
+* [Connecting to BAM SQL Server via ODBC](https://github.com/borealbirds/tutorials/tree/master/establish-odbc-to-sql-server)
+* [Test fetch data from Access datbase via RODBC](https://github.com/borealbirds/tutorials/blob/master/testing-odbc-to-r-connection/testing-odbc-to-r-connection.md)
+* [Fetch data from SQL server via RODBC](https://github.com/borealbirds/tutorials/blob/master/fetch-data-from-sql-server-to-r/README.Rmd)
 * [aargh. Prep data for offset calculation](https://github.com/borealbirds/tutorials/tree/master/prep-for-offset-creation)
 * [aargh. Prep other covariates for analyses]
 * [Apply QPAD](https://github.com/borealbirds/tutorials/tree/master/apply-qpad/README.md)
