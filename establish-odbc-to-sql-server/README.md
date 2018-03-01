@@ -33,7 +33,9 @@ Once you are granted access via a username and password:
 [To do]
 
 
-## Check in MS Access
+## Interact with SQL Server
+
+### Use MS Access to interact with SQL server
 
 ![Connect to external source - ODBC](https://github.com/borealbirds/tutorials/blob/master/establish-odbc-to-sql-server/Fig8.AccessODBC.png "External Data - ODBC")
 
@@ -46,18 +48,6 @@ Once you are granted access via a username and password:
 ![Pick desired tables](https://github.com/borealbirds/tutorials/blob/master/establish-odbc-to-sql-server/Fig12.selecttable.png "Select tables you want to use")
 
 
+### Use rodbc to interact with SQL server
 
-
-
-
-
-
-
-
-
-
-## Configure ODBC settings on your computer (Apple)
-
-
-
-
+[to do]
