@@ -15,7 +15,7 @@ Three options to view lists of environmental / biophysical datasets used in BAM 
 
 ---
 
-#### DSLS
+### DSLS
 
 **Explanation**: Days since local spring
 
@@ -40,7 +40,7 @@ DSLS <- (offdat$JULIAN - offdat$ss_sprng) / 365
 
 ---
 
-#### JDAY
+### JDAY
 
 **Explanation**: Julian day / 365
 
@@ -60,7 +60,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC4Conif
+### LCC4Conif
 
 **Explanation**: Indicator variable – if habitat is coniferous 
 
@@ -74,7 +74,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC4Open
+### LCC4Open
 
 **Explanation**: Indicator variable – if habitat is open
 
@@ -88,7 +88,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC2OpenWet
+### LCC2OpenWet
 
 **Explanation**: Indicator variable - if habitat is open or wet
 
@@ -102,7 +102,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC4Wet
+### LCC4Wet
 **Explanation**: Indicator variable – if habitat is wet (from LCC4)
 
 **Derived from**: LCC2. LCC2 is derived from [NALCMS landcover](https://sites.google.com/site/bambiophysical/home/landcover/modis-land-cover-map-of-canada-2005) 
@@ -115,7 +115,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### MAXDIS
+### MAXDIS
 
 **Explanation**: Maximum distance band for point count in m, divided by 100
 
@@ -129,7 +129,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### TREE
+### TREE
 
 **Explanation**: Percent tree cover
 
@@ -141,7 +141,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 # to be filled in later
 ```
 
-#### TSSR
+### TSSR
 
 **Explanation**: Time since sunrise (requires time zone)
 
@@ -156,7 +156,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ### LANDCOVER VARIABLES
 
-#### LCC05
+### LCC05
 
 **Explanation**: 
 
@@ -170,7 +170,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC2
+### LCC2
 
 **Explanation**: 
 
@@ -184,7 +184,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-#### LCC4
+### LCC4
 
 **Explanation**: 
 
@@ -199,7 +199,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ### METHODOLOGICAL VARIABLES
 
-#### ROAD
+### ROAD
 
 **Explanation**: 
 
