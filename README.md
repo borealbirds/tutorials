@@ -19,16 +19,16 @@ Each tutorial below explains a particular data processing/analysis step in the [
 * [Overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md): Understanding this will give you a better sense of what other tutorials you need to review.
 
 ### BAM Data and Data Structure
-* [Description of the BAM Avian Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
+* [Description of the BAM Avian Database](https://github.com/borealbirds/tutorials/blob/master/avian-database-structure/README.md)
 * [BAM Biophysical Database (redirect)](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.Rmd)
 * [Variables needed for Offset calculation](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.Rmd#offset-variables)
 
 ### Data Processing
 
-* [Connecting to BAM SQL Server via ODBC](https://github.com/borealbirds/tutorials/tree/master/establish-odbc-to-sql-server)
+* [Connecting to BAM SQL Server via ODBC](https://github.com/borealbirds/tutorials/blob/master/establish-odbc-to-sql-server/README.md)
 * [Test fetch data from Access datbase via RODBC](https://github.com/borealbirds/tutorials/blob/master/testing-odbc-to-r-connection/testing-odbc-to-r-connection.md)
 * [Fetch data from SQL server via RODBC](https://github.com/borealbirds/tutorials/blob/master/fetch-data-from-sql-server-to-r/README.Rmd)
-* [Step A1. Prep data for offset calculation](https://github.com/borealbirds/tutorials/tree/master/prep-for-offset-creation)
+* [Step A1. Prep data for offset calculation](https://github.com/borealbirds/tutorials/blob/master/prep-for-offset-creation/README.md)
 * [Step A2. Prep other covariates for analyses]
 * [Apply QPAD](https://github.com/borealbirds/tutorials/tree/master/apply-qpad/README.md)
 * [Step B. Calculate Offsets](https://github.com/borealbirds/tutorials/blob/master/offset-estimation/README.md)
