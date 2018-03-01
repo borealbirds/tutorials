@@ -8,15 +8,40 @@ Fetch data from SQL Server
 * Known your SQL username and password
 
 ## Establish ODBC Connection
-`library(RODBC)` 
-`r library(RODBC)`
-
 ``` {r}
-cn <- odbcDriverConnect(connection="Driver={ODBC Driver 13 for SQL Server};server=boreal.biology.ualberta.ca;trusted_connection=no; UID=userid; PWD=pwd;")
+library(RODBC)
+```
+
+### Option 1. 
+``` {r}
+cn <- odbcDriverConnect(connection="Driver = {ODBC Driver 13 for SQL Server};  
+                                    server = boreal.biology.ualberta.ca\boreal;
+                                    trusted_connection = no; 
+                                    UID = userid; 
+                                    PWD = pwd;")
 ```
 
 
+### Option 2. 
+``` {r}
+cn <- odbcConnect(dsn="BOREAL", uid = "userid", pwd = "pwd")
+```
 
+BOREAL = the name you provided for your connection via the ODBC configuration
+![Sever details](https://github.com/borealbirds/tutorials/blob/master/establish-odbc-to-sql-server/Fig4.serverdetails.png "Server details")
+
+userid = the user ID you use to access the SQL server
+password = the password you use to access the SQL server
+
+![Login details](https://github.com/borealbirds/tutorials/blob/master/establish-odbc-to-sql-server/Fig5.Login.png "Login details")
+
+
+## Test the connection by importing a table into R
+
+Note: these particular tables are not up to date and will probably change names
+``` {r}
+XY <- sqlFetch(cn, 'dbo.National_XY_V4_2015')
+```
 
 
 
