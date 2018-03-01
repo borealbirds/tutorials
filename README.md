@@ -11,7 +11,7 @@ If you have a new tutorial to share with the group, do the following:
 ## Tutorials
 
 ### BAM Workflow
-* [Overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md)
+* [Overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md): Understanding this will give you a better sense of what other tutorials you need to review.
 
 ### Data Structure
 * [Description of the BAM Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
