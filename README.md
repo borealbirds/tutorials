@@ -20,7 +20,8 @@ Each tutorial below explains a particular data processing/analysis step in the [
 
 ### BAM Data and Data Structure
 * [Description of the BAM Avian Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
-* [BAM Biophysical Database (redirect)](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.md)
+* [BAM Biophysical Database (redirect)](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.Rmd)
+* [Variables needed for Offset calculation](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.Rmd#offset-variables)
 
 ### Data Processing
 
