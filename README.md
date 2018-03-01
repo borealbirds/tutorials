@@ -10,9 +10,21 @@ If you have a new tutorial to share with the group, do the following:
 
 ## Tutorials
 
-### Data processing
+### BAM Workflow
+* [Overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md)
+
+### Data Structure
+* [Description of the BAM Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
+
+### Data Processing
 
 * [Testing ODBC-to-R connection](https://github.com/borealbirds/tutorials/blob/master/testing-odbc-to-r-connection/testing-odbc-to-r-connection.md)
+* [Fetch data from SQL server]
+* [aargh. Prep data for offset calculation](https://github.com/borealbirds/tutorials/tree/master/prep-for-offset-creation)
+* [aargh. Prep other covariates for analyses]
+* [Apply QPAD](https://github.com/borealbirds/tutorials/tree/master/apply-qpad/README.md)
+* [boink. Calculate Offsets](https://github.com/borealbirds/tutorials/blob/master/offset-estimation/README.md)
+* [fkrsh. Generate prediction grids]
 
 ### Data analysis
 
