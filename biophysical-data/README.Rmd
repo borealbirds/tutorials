@@ -15,7 +15,7 @@ Three options to view lists of environmental / biophysical datasets used in BAM 
 
 ---
 
-### DSLS
+### -- DSLS --
 
 **Explanation**: Days since local spring
 
@@ -40,7 +40,7 @@ DSLS <- (offdat$JULIAN - offdat$ss_sprng) / 365
 
 ---
 
-### JDAY
+### >> JDAY <<
 
 **Explanation**: Julian day / 365
 
@@ -60,7 +60,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-### LCC4Conif
+### -= LCC4Conif =-
 
 **Explanation**: Indicator variable – if habitat is coniferous 
 
@@ -74,7 +74,7 @@ PKEY$JDAY <- DD$yday / 365 # JDAY is proportion of year
 
 ---
 
-### LCC4Open
+### ~ LCC4Open ~ 
 
 **Explanation**: Indicator variable – if habitat is open
 
