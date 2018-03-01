@@ -18,13 +18,14 @@ Each tutorial below explains a particular data processing/analysis step in the [
 ### BAM Workflow
 * [Overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md): Understanding this will give you a better sense of what other tutorials you need to review.
 
-### Data Structure
-* [Description of the BAM Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
+### BAM Data and Data Structure
+* [Description of the BAM Avian Database](https://github.com/borealbirds/tutorials/tree/master/avian-database-structure/)
+* [BAM Biophysical Database (redirect)](https://github.com/borealbirds/tutorials/blob/master/biophysical-data/README.md)
 
 ### Data Processing
 
 * [Testing ODBC-to-R connection](https://github.com/borealbirds/tutorials/blob/master/testing-odbc-to-r-connection/testing-odbc-to-r-connection.md)
-* [Fetch data from SQL server]
+* [Fetch data from SQL server](https://github.com/borealbirds/tutorials/blob/master/fetch-data-from-sql-server-to-r/README.Rmd)
 * [aargh. Prep data for offset calculation](https://github.com/borealbirds/tutorials/tree/master/prep-for-offset-creation)
 * [aargh. Prep other covariates for analyses]
 * [Apply QPAD](https://github.com/borealbirds/tutorials/tree/master/apply-qpad/README.md)
