@@ -1,12 +1,17 @@
-# Tutorials for BAM folks
+# Tutorials for BAM Folks
 
-Each tutorial explains a particular data processing/analysis step.
-If you have a new tutorial to share with the group, do the following:
+A place to store tutorials, scripts, and documentation for steps that most BAM Team Members will need at some point.
 
-1. check if the tutorial exists, if yes: contact the person who last committed to it,
-2. if not, create a new folder that has lower case letters and dashes (slugified), like `new-folder` (i.e. not `New Folder`),
-3. include your tutorial within the folder, for file options follow some of the existing tutorials.
-4. Once done, add the link below.
+Each tutorial below explains a particular data processing/analysis step in the [overall BAM Modelling Workflow](https://github.com/borealbirds/tutorials/blob/master/overall-bam-modelling-workflow/README.md). 
+
+**If you have a new tutorial to share with the group, do the following:**
+
+1. check if the tutorial exists
+    * if yes: contact the person who last committed to it and then work out how to improve it
+    * if no: create a new one
+2. To create a tutorial, create a new folder that has lower case letters and dashes (slugified), like `new-folder` (i.e. not `New Folder`),
+2. Include your tutorial within the folder, for file options follow some of the existing tutorials.
+4. Once a tutorial is started, add the link below and let Nicole know so it can be added to BAM News. 
 
 ## Tutorials
 
