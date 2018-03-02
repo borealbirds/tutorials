@@ -10,7 +10,7 @@
         <div class="col-md-8 col-md-offset-2">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{ site.baseurl }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ site.baseurl }}{{ page.category }}">{% for topic in site.topics %}{% if page.category == topic.name %}{{ topic.title }}{% endif %}{% endfor %}</a></li>
+              <li class="breadcrumb-item"><a href="{{ site.baseurl }}/{{ page.category }}/index.html">{% for topic in site.topics %}{% if page.category == topic.name %}{{ topic.title }}{% endif %}{% endfor %}</a></li>
             </ol>
             {% if page.title %}<h1 class="title">{{ page.title }}</h1>{% endif %}
             {% if page.subtitle %}<h2 class="subtitle">{{ page.subtitle }}</h2>{% endif %}
