@@ -35,8 +35,8 @@ kramdown:
   hard_wrap: false
 markdown_ext: "markdown,mkdown,mkdn,mkd,md,rmd,Rmd"
 
-# Bootswatch theme (cosmo)
-bswtheme: superhero
+# Bootswatch theme
+bswtheme: lux
 # fancy fonts on/off
 fancyfonts: true
 # navbar style: inverse, transparent
@@ -44,8 +44,6 @@ navbar: transparent
 
 # disqus id comes here
 disqus:
-# show google ads?
-ads: false
 
 author: "<a href='http://borealbirds.ca'>Boreal Avian Modelling Project</a>"
 author_plain: 'Boreal Avian Modelling Project'
