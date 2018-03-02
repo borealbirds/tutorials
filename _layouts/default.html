@@ -14,7 +14,7 @@
             {% if page.category != null %}
             <p id="post-meta">
             <small>
-            <i class="fa fa-calendar"></i> {{ page.date | date: '%B %d, %Y' }}
+            <i class="fa fa-calendar"></i> {{ page.date | date: '%B %-d, %Y' }}
             {% if page.tags != null %}<i class="fa fa-tag"></i> {% for tag in page.tags %}<a href="{{ site.baseurl }}/tags.html#{{ tag | slugify }}" class="btn btn-info btn-xs">{{ tag }}</a> {% endfor %}{% endif %}
             </small>
             </p>

@@ -8,8 +8,30 @@ include: [".htaccess"]
 exclude: ["README.md","LICENSE"]
 timezone: America/Edmonton
 
-categories: ["setup", "data", "qpad", "models"]
 permalink: /:categories/:title:output_ext
+
+# topic name is the jekyll category
+topics:
+  setup:
+    name: setup
+    title: 'Setting up the workflow'
+    description:
+  bamdb:
+    name: bamdb
+    title: 'processing avian data'
+    description:
+  gis:
+    name: gis
+    title: 'Processing geospatial data'
+    description:
+  qpad:
+    name: qpad
+    title: 'Estimating and calculating offsets'
+    description:
+  models:
+    name: models
+    title: 'Modeling species'
+    description:
 
 encoding: UTF-8
 markdown: kramdown
@@ -19,7 +41,7 @@ kramdown:
 markdown_ext: "markdown,mkdown,mkdn,mkd,md,rmd,Rmd"
 
 # Bootswatch theme (cosmo)
-bswtheme: yeti
+bswtheme: superhero
 # fancy fonts on/off
 fancyfonts: true
 # navbar style: inverse, transparent
