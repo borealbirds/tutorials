@@ -1,19 +1,22 @@
-title: "BamHub"
+title: "BAM Tutorials"
 description: "Boreal Avian Modelling Project"
 
 #baseurl:  http://localhost:4000
-baseurl: https://borealbirds.github.io
+baseurl: https://borealbirds.github.io/tutorials
 
 include: [".htaccess"]
-exclude: ["README.md","LICENSE.md"]
+exclude: ["README.md","LICENSE"]
 timezone: America/Edmonton
+
+categories: ["setup", "data", "qpad", "models"]
+permalink: /:categories/:title:output_ext
 
 encoding: UTF-8
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md,rmd,Rmd"
 
 # Bootswatch theme (cosmo)
 bswtheme: yeti
@@ -22,10 +25,12 @@ fancyfonts: true
 # navbar style: inverse, transparent
 navbar: transparent
 
+# disqus id comes here
 disqus:
+# show google ads?
 ads: false
 
-author: "<a href='http://borealbirds.cs'>Boreal Avian Modelling Project</a>"
+author: "<a href='http://borealbirds.ca'>Boreal Avian Modelling Project</a>"
 author_plain: 'Boreal Avian Modelling Project'
 
 gems:
