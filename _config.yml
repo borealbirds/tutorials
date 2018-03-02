@@ -12,24 +12,19 @@ permalink: /:categories/:title:output_ext
 
 # topic name is the jekyll category
 topics:
-  setup:
-    name: setup
+  - name: setup
     title: 'Setting up the workflow'
     description:
-  bamdb:
-    name: bamdb
+  - name: bamdb
     title: 'processing avian data'
     description:
-  gis:
-    name: gis
+  - name: gis
     title: 'Processing geospatial data'
     description:
-  qpad:
-    name: qpad
+  - name: qpad
     title: 'Estimating and calculating offsets'
     description:
-  models:
-    name: models
+  - name: models
     title: 'Modeling species'
     description:
 
