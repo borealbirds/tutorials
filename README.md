@@ -41,8 +41,10 @@ Coming soon...
 ## TODO
 
 1. Establishing ODBC connection (**DONE**)
-2. Fetch data from db and pre-process long format
-3. Joining tables and filtering
-4. Species cross tabulation
-5. Calculating species offsets
-6. Analyzing point count data with QPAD offsets
+2. Fetch data from db (**DONE**)
+3. Database structure (**next!**)
+4. Pre-process long format (**next!**)
+5. Joining tables and filtering 
+6. Species cross tabulation
+7. Calculating species offsets
+8. Analyzing point count data with QPAD offsets
