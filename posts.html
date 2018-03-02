@@ -1,11 +1,10 @@
 ---
 title: Posts
-description: "An archive of all posts"
+description: "An archive of all tutorials"
 layout: default
 ---
 
-{% for post in site.posts %}
-<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-<small><i class="fa fa-calendar"></i> {{ post.date | date: '%B %-d, %Y' }}</small>
+{% for post in site.posts reversed %}
+<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
 <p>{{ post.excerpt | strip_html }}</p>
 {% endfor %}
