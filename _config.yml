@@ -16,7 +16,7 @@ topics:
     title: 'Setting up the workflow'
     description:
   - name: bamdb
-    title: 'processing avian data'
+    title: 'Processing avian data'
     description:
   - name: gis
     title: 'Processing geospatial data'
