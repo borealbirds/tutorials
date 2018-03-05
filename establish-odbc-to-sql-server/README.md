@@ -1,9 +1,9 @@
 Establishing Connection to the SQL Server holding BAM's database
 =====================
 
-## First steps
+## First steps: Get username and password
 
-* Get access to the SQL server where BAM stores our avian data -- Contact Erin Bayne
+* Get access to the SQL server where BAM stores our avian data -- Contact **Erin Bayne**
 
 ## Configure ODBC settings on your computer 
 ### Windows
