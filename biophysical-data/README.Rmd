@@ -6,8 +6,8 @@ BAM's Environmental Data
 Three options to view lists of environmental / biophysical datasets used in BAM analyses. 
 
 1. [BAM website](http://www.borealbirds.ca/index.php/biophysical_data) - Highlights the major products used up to 2012.
-2. [Test Wiki](https://sites.google.com/site/bambiophysical/) describing biophysical data we have used or might use - last updated 2017, but incomplete
-3. BAM's GeoNetwork data catalog -- currently **under construction**. Expected 2018. 
+2. [BAM.ShareDrive Spreadsheet](https://docs.google.com/spreadsheets/d/1Kw-CPXXQ7E87ThxRbTEg_QyU4pfzRnsq5-50unFvhv4/edit?usp=drive_web&ouid=104563141700000594143) listing biophysical data we have used or might use - last updated 2018, but incomplete
+3. BAM's GeoNetwork data catalog -- currently **under construction**. Data will be added soon. IP address 208.167.182.67. Expected 2018. 
 
 ## Variables
 
