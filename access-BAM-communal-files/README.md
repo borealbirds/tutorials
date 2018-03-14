@@ -62,7 +62,7 @@ Project discussions
 2. Click "Alert Me" and select "Set alert on this list".
 3. Scroll to bottom and click "OK". Or you can customize your settings (frequency of alerts, delivery method, etc)
 
-![Alert Me 2017 SharePoint]( "SharePoint 2017 Alert Me")
+![Alert Me 2017 SharePoint](https://github.com/borealbirds/tutorials/blob/master/access-BAM-communal-files/alertmebutton.jpg "SharePoint 2017 Alert Me")
 
 
 ## 2018 SharePoint site
@@ -79,3 +79,6 @@ Project discussions will be moved here once everyone has access.
 3. Nicole 
 
 **Set up notifications**
+
+
+![Alert Me 2018 SharePoint](https://github.com/borealbirds/tutorials/blob/master/access-BAM-communal-files/alertmebutton-SP2018.jpg "SharePoint 2018 Alert Me")
