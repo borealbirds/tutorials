@@ -80,5 +80,10 @@ Project discussions will be moved here once everyone has access.
 
 **Set up notifications**
 
+1. Navigate to the Discussion Forum you want alerts on. e.g., Request Portal, or Theme-specific Discussion Forums. 
+2. Click "Alert me" and select "Set alert on this list"
+3. Review or customize settings and click "OK". 
+4. **Important** You'll notice emails are sent to your ALES email address. To ensure you receive notifications at your primary email account, do the following:
+    1. 
 
 ![Alert Me 2018 SharePoint](https://github.com/borealbirds/tutorials/blob/master/access-BAM-communal-files/alertmebutton-SP2018.jpg "SharePoint 2018 Alert Me")
