@@ -21,7 +21,7 @@ More info from the U of A site: https://ist.ualberta.ca/services/ccid-passwords/
 
 Login associated with Faculty of Agricultural, Life & Environmental Sciences.   
 
-**Why you need it**
+#### Why you need it
 
 Used to access the "M Drive" / "RenR Server" / "Boreal Server"*
 
@@ -31,7 +31,7 @@ For some people, it will be used to access your computer remotely.
 
 *multiple names for legacy reasons. It's a server drive hosted within Renewable Resources at the U of A. It's mostly redunant with BAM's shared Google Drive. 
 
-**How to get it**
+####How to get it
 
 BAM Team Members within Renewable Resources might receive an ALES ID automatically.  
 
@@ -39,24 +39,26 @@ BAM Team Members external to Renewable Resources or UAlberta must also obtain AL
 
 ## ALES Email 
 
-**Why you need it**
+####Why you need it
 
 To access BAM's 2018 SharePoint site. 
 
-**How to get it**
+####How to get it
+
+[Under construction.]
 
 ## Pre-2017 SharePoint site
 
-**Why you need it**
+####Why you need it
 
 Project discussions
 
-**How to get access**
+####How to get access
 
 1. Get a CCID
 2. Ask Nicole to grant you access (easy step in SharePoint). 
 
-**Set up notifications**
+####Set up notifications
 
 1. Navigate to the [BAM's Sharepoint discussion forum](https://sharepoint.ualberta.ca/bam/teamsite/Lists/ProjectDiscussion/AllItems.aspx).
 2. Click "Alert Me" and select "Set alert on this list".
@@ -67,18 +69,18 @@ Project discussions
 
 ## 2018 SharePoint site
 
-**Why you need it**
+####Why you need it
 
 BAM Operations Guide (content that isn't public). 
 Project discussions will be moved here once everyone has access. 
 
-**How to get access**
+####How to get access
 
 1. Get ALES ID.
 2. Ask Nicole
 3. Nicole 
 
-**Set up notifications**
+####Set up notifications
 
 1. Navigate to the Discussion Forum you want alerts on. e.g., Request Portal, or Theme-specific Discussion Forums. 
 2. Click "Alert me" and select "Set alert on this list"
