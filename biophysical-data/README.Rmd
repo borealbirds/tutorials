@@ -7,7 +7,7 @@ Three options to view lists of environmental / biophysical datasets used in BAM 
 
 1. [BAM website](http://www.borealbirds.ca/index.php/biophysical_data) - Highlights the major products used up to 2012.
 2. [BAM.ShareDrive Spreadsheet](https://docs.google.com/spreadsheets/d/1Kw-CPXXQ7E87ThxRbTEg_QyU4pfzRnsq5-50unFvhv4/edit?usp=drive_web&ouid=104563141700000594143) listing biophysical data we have used or might use - last updated 2018, but incomplete
-3. BAM's GeoNetwork data catalog -- currently **under construction**. Data will be added soon. IP address 208.167.182.67. Expected 2018. 
+3. BAM's GeoNetwork data catalog -- currently **under construction**. Data will be added soon. IP address http://206.167.182.7:8080/geonetwork/. Expected 2018. 
 
 ## Variables
 
