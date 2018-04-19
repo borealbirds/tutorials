@@ -68,8 +68,11 @@ for(i in 1:10) {
 dat <- data.frame(domainNAME=c(rep("dom1", times=8)),
           themeNAME=c(rep("thm1", times=3), rep("thm2", times=5)),
           clusterNAME=c(rep("clus1", times=2), "clus2", "clus3", "clus4", rep("clus5", times=3)),
-          PROJECTname=c("proj1", "proj2", rep("proj3", times=4), "proj4", "proj5"))
+          PROJECTname=paste("proj", 1:8, sep=""),
+          PROJECTpurpose=paste("bla", 1:8, sep=""))
+```
 
+``` {r}
 # column widths are fixed based one expected content
 col1L <- 0
 col2L <- 0.2
@@ -209,11 +212,12 @@ F.hierarcplot <- function(dat,
          wrapsize3=15,
          wrapsize4=35,
          wrapsize5=45)
-) {
+ {
 # dat is a data frame containing the hierarchically-organized information. 
-# column widths are set  based on expected content. Default values are what last worked for mine. 
+# column coordinates are set  based on expected content. Default values are what last worked for mine. 
 # note this function is written for 5 columns and isn't flexible to other options.
 
+#PROJECT COLUMN
 # determine number of rows and sizes for project column
 projcoor <- data.frame(L=rep(col4L, times=nrow(dat)),
                        R=rep(col5L, times=nrow(dat)),
@@ -238,7 +242,7 @@ for (i in 1:nrow(detcoor)) {
 
 
 # determine number of rows and sizes for  cluster column
-uniqueclus <- length(unique(dat$clus))
+uniqueclus <- length(unique(dat$clusterNAME))
 cluscoor <- data.frame(L=rep(col3L, times=uniqueclus),
                        R=rep(col4L, times=uniqueclus),
                        B=rep(NA, times=uniqueclus),
@@ -248,13 +252,13 @@ for (i in 1:nrow(cluscoor)) {
   if (i == 1) {
     nproj.in.prevclus <- 0
     ithclus <- unique(dat$clus)[i]
-    nproj.in.ithclus <-  length(dat$proj[dat$clus %in% ithclus])
+    nproj.in.ithclus <-  length(dat$PROJECTname[dat$clusterNAME %in% ithclus])
   } else {
     prevclus <- unique(dat$clus)[1:(i-1)] # clusters previously populated 
-    nproj.in.prevclus <-  length(dat$proj[dat$clus %in% prevclus]) # number of projects within previously populated clusters
+    nproj.in.prevclus <-  length(dat$PROJECTname[dat$clusterNAME %in% prevclus]) # number of projects within previously populated clusters
     
     ithclus <- unique(dat$clus)[i] # cluster to populate on ith iteration
-    nproj.in.ithclus <- length(dat$proj[dat$clus %in% ithclus]) # number of projects within this cluster
+    nproj.in.ithclus <- length(dat$PROJECTname[dat$clusterNAME %in% ithclus]) # number of projects within this cluster
   }
     
   cluscoor[i,3] <- 1 - ((nproj.in.ithclus + nproj.in.prevclus) / nrow(dat)) # bottom coordinate
@@ -263,7 +267,7 @@ for (i in 1:nrow(cluscoor)) {
 }
 
 # determine number of rows and sizes for  theme column
-uniquetheme <- length(unique(dat$theme))
+uniquetheme <- length(unique(dat$themeNAME))
 themecoor <- data.frame(L=rep(col2L, times=uniquetheme),
                        R=rep(col3L, times=uniquetheme),
                        B=rep(NA, times=uniquetheme),
@@ -272,20 +276,19 @@ themecoor <- data.frame(L=rep(col2L, times=uniquetheme),
 for (i in 1:nrow(themecoor)) {
   if (i == 1) {
     nproj.in.prevtheme <- 0
-    iththeme <- unique(dat$theme)[i]
-    nproj.in.iththeme <-  length(dat$proj[dat$theme %in% iththeme])
+    iththeme <- unique(dat$themeNAME)[i]
+    nproj.in.iththeme <-  length(dat$PROJECTname[dat$themeNAME %in% iththeme])
   } else {
-    prevtheme <- unique(dat$theme)[1:(i-1)] # themes previously populated 
-    nproj.in.prevtheme <-  length(dat$proj[dat$theme %in% prevtheme]) # number of projects within previously populated themes
+    prevtheme <- unique(dat$themeNAME)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$PROJECTname[dat$themeNAME %in% prevtheme]) # number of projects within previously populated themes
     
-    iththeme <- unique(dat$theme)[i] # cluster to populate on ith iteration
-    nproj.in.iththeme <- length(dat$proj[dat$theme %in% iththeme]) # number of projects within this cluster
+    iththeme <- unique(dat$themeNAME)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
   }
     
   themecoor[i,3] <- 1 - ((nproj.in.iththeme + nproj.in.prevtheme) / nrow(dat)) # bottom coordinate
   
   themecoor[i,4] <- 1 - (nproj.in.prevtheme/nrow(dat))  # top coordinate
-  
 }
 
 # determine number of rows and sizes for  domain column
@@ -299,21 +302,21 @@ for (i in 1:nrow(domaincoor)) {
   if (i == 1) {
     nproj.in.prevdomain <- 0
     ithdomain <- unique(dat$domainNAME)[i]
-    nproj.in.ithdomain <-  length(dat$proj[dat$domainNAME %in% ithdomain])
+    nproj.in.ithdomain <-  length(dat$PROJECTname[dat$domainNAME %in% ithdomain])
   } else {
-    prevtheme <- unique(dat$theme)[1:(i-1)] # themes previously populated 
-    nproj.in.prevtheme <-  length(dat$proj[dat$theme %in% prevtheme]) # number of projects within previously populated themes
+    prevdomain <- unique(dat$theme)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$PROJECTname[dat$domainNAME %in% prevdomain]) # number of projects within previously populated domains
     
-    iththeme <- unique(dat$theme)[i] # cluster to populate on ith iteration
-    nproj.in.iththeme <- length(dat$proj[dat$theme %in% iththeme]) # number of projects within this cluster
+    ithdomain <- unique(dat$domainNAME)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
   }
     
   domaincoor[i,3] <- 1 - ((nproj.in.ithdomain + nproj.in.prevdomain) / nrow(dat)) # bottom coordinate
   
   domaincoor[i,4] <- 1 - (nproj.in.prevdomain/nrow(dat))  # top coordinate
-  
 }
 
+# COMBINE ALL COORDINATES INTO ONE BIG MATRIX.
 allcoor <- rbind(domaincoor, themecoor, cluscoor, projcoor, detcoor)
 
 split.screen(as.matrix(allcoor))
@@ -340,12 +343,17 @@ for(i in 1:nrow(allcoor)) {
  close.screen(all.screens = TRUE)
          }
 
-
 ```
 
 
 ### demo dataset 1
 ``` {r}
+F.hierarcplot(dat)
+```
+
+### demo dataset 2
+``` {r}
 dat <- read.csv("other-useful-R-functions/demo.data.csv", header=T)
+F.hierarcplot(dat)
 ```
 
