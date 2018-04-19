@@ -1,0 +1,351 @@
+---
+title: "Split screen to display hierarchical information graphically"
+author: "Nicole Barker"
+date: "April 12, 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+I'm writing this code to solve a specific problem. 
+Namely, how to reproduce figure like this ![](https://github.com/borealbirds/2018Workplan/blob/master/Demo.jpg) based on ever-changing information. 
+
+i.e., I wanted a script that would convert a table (e.g., spit out from a database query) into a figure.  I didn't want to do a lot of mousework to fine-tune box sizes manually, since I expect to update content multiple times a year. 
+
+The code is not very generalizable right now. I'd like it to be more flexible, taking numbers of columns and column widths based on content. But right now, I can't spend time on that. I'm happy to take suggestions. 
+
+``` {r}
+require(knitr)
+```
+
+## Static layout (not dynamic based on structure of content in data.frame)
+``` {r}
+par(mar=c(0,0,0,0))
+
+domL <- 0
+domRthmL <- 0.1
+thmRclsL <- 0.2
+clsRprjL <- 0.3
+prjRdetL <- 0.7
+detR <- 1
+
+prj1T <- 1
+prj2T <- 1/6 * 5
+prj3T <- 1/6 * 4
+prj4T <- 1/6 * 3
+prj5T <- 1/6 * 2
+prj6T <- 1/6 * 1
+prj6B <- 0
+
+m <- rbind(c(domL,     domRthmL, prj6B, prj1T), 
+           c(domRthmL, thmRclsL, prj6B, prj1T),
+           c(thmRclsL, clsRprjL, prj6T, prj1T),
+           c(thmRclsL, clsRprjL, prj6B, prj6T),
+           c(clsRprjL, prjRdetL, prj2T, prj1T),
+           c(clsRprjL, prjRdetL, prj3T, prj2T),
+           c(clsRprjL, prjRdetL, prj4T, prj3T),
+           c(clsRprjL, prjRdetL, prj5T, prj4T),
+           c(clsRprjL, prjRdetL, prj6T, prj5T),
+           c(clsRprjL, prjRdetL, prj6B, prj6T))
+
+split.screen(m)
+
+for(i in 1:10) {
+ screen(i)
+ par(mar = c(0, 0, 0, 0))
+ text(.5,.5,"text")
+ box()
+ }
+
+ close.screen(all.screens = TRUE)
+
+```
+
+## Dynamic layout. Adjusts based on content in data.frame
+
+### demo dataset 1
+``` {r}
+dat <- data.frame(domainNAME=c(rep("dom1", times=8)),
+          themeNAME=c(rep("thm1", times=3), rep("thm2", times=5)),
+          clusterNAME=c(rep("clus1", times=2), "clus2", "clus3", "clus4", rep("clus5", times=3)),
+          PROJECTname=c("proj1", "proj2", rep("proj3", times=4), "proj4", "proj5"))
+
+# column widths are fixed based one expected content
+col1L <- 0
+col2L <- 0.2
+col3L <- 0.4
+col4L <- 0.65
+col5L <- 0.80
+col5R <- 1
+
+# project column
+projcoor <- data.frame(L=rep(col4L, times=nrow(dat)),
+                       R=rep(col5L, times=nrow(dat)),
+                       B=rep(NA, times=nrow(dat)),
+                       T=rep(NA, times=nrow(dat)))
+
+for (i in 1:nrow(projcoor)) {
+  projcoor[i,3] <- 1 - (i / nrow(projcoor)) # bottom coordinate
+  projcoor[i,4] <- 1 - ((i-1)/nrow(projcoor)) # top coordinate
+}
+
+# detail column
+detcoor <- data.frame(L=rep(col5L, times=nrow(dat)),
+                       R=rep(col5R, times=nrow(dat)),
+                       B=rep(NA, times=nrow(dat)),
+                       T=rep(NA, times=nrow(dat)))
+
+for (i in 1:nrow(detcoor)) {
+  detcoor[i,3] <- 1 - (i / nrow(detcoor)) # bottom coordinate
+  detcoor[i,4] <- 1 - ((i-1)/nrow(detcoor)) # top coordinate
+}
+
+
+# cluster column
+uniqueclus <- length(unique(dat$clusterNAME))
+cluscoor <- data.frame(L=rep(col3L, times=uniqueclus),
+                       R=rep(col4L, times=uniqueclus),
+                       B=rep(NA, times=uniqueclus),
+                       T=rep(NA, times=uniqueclus))
+
+for (i in 1:nrow(cluscoor)) {
+  if (i == 1) {
+    nproj.in.prevclus <- 0
+    ithclus <- unique(dat$clus)[i]
+    nproj.in.ithclus <-  length(dat$PROJECTname[dat$clusterNAME %in% ithclus])
+  } else {
+    prevclus <- unique(dat$clus)[1:(i-1)] # clusters previously populated 
+    nproj.in.prevclus <-  length(dat$PROJECTname[dat$clusterNAME %in% prevclus]) # number of projects within previously populated clusters
+    
+    ithclus <- unique(dat$clus)[i] # cluster to populate on ith iteration
+    nproj.in.ithclus <- length(dat$PROJECTname[dat$clusterNAME %in% ithclus]) # number of projects within this cluster
+  }
+    
+  cluscoor[i,3] <- 1 - ((nproj.in.ithclus + nproj.in.prevclus) / nrow(dat)) # bottom coordinate
+  
+  cluscoor[i,4] <- 1 - (nproj.in.prevclus/nrow(dat))  # top coordinate
+}
+
+
+# theme column
+uniquetheme <- length(unique(dat$themeNAME))
+themecoor <- data.frame(L=rep(col2L, times=uniquetheme),
+                       R=rep(col3L, times=uniquetheme),
+                       B=rep(NA, times=uniquetheme),
+                       T=rep(NA, times=uniquetheme))
+
+for (i in 1:nrow(themecoor)) {
+  if (i == 1) {
+    nproj.in.prevtheme <- 0
+    iththeme <- unique(dat$themeNAME)[i]
+    nproj.in.iththeme <-  length(dat$PROJECTname[dat$themeNAME %in% iththeme])
+  } else {
+    prevtheme <- unique(dat$themeNAME)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$PROJECTname[dat$themeNAME %in% prevtheme]) # number of projects within previously populated themes
+    
+    iththeme <- unique(dat$themeNAME)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
+  }
+    
+  themecoor[i,3] <- 1 - ((nproj.in.iththeme + nproj.in.prevtheme) / nrow(dat)) # bottom coordinate
+  
+  themecoor[i,4] <- 1 - (nproj.in.prevtheme/nrow(dat))  # top coordinate
+  
+}
+
+# domain column
+uniquedomain <- length(unique(dat$domainNAME))
+domaincoor <- data.frame(L=rep(col1L, times=uniquedomain),
+                       R=rep(col2L, times=uniquedomain),
+                       B=rep(NA, times=uniquedomain),
+                       T=rep(NA, times=uniquedomain))
+
+for (i in 1:nrow(domaincoor)) {
+  if (i == 1) {
+    nproj.in.prevdomain <- 0
+    ithdomain <- unique(dat$domainNAME)[i]
+    nproj.in.ithdomain <-  length(dat$PROJECTname[dat$domainNAME %in% ithdomain])
+  } else {
+    prevtheme <- unique(dat$theme)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$PROJECTname[dat$domainNAME %in% prevdomain]) # number of projects within previously populated domains
+    
+    ithdomain <- unique(dat$domainNAME)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
+  }
+    
+  domaincoor[i,3] <- 1 - ((nproj.in.ithdomain + nproj.in.prevdomain) / nrow(dat)) # bottom coordinate
+  
+  domaincoor[i,4] <- 1 - (nproj.in.prevdomain/nrow(dat))  # top coordinate
+  
+}
+
+allcoor <- rbind(domaincoor, themecoor, cluscoor, projcoor, detcoor)
+
+split.screen(as.matrix(allcoor))
+
+for(i in 1:nrow(allcoor)) {
+ screen(i)
+ par(mar = c(0, 0, 0, 0))
+ text(.5,.5,"text")
+ box()
+ }
+
+ close.screen(all.screens = TRUE)
+
+```
+
+### convert to function
+
+``` {r}
+F.hierarcplot <- function(dat,
+         col1L = 0, 
+         col2L = 0.1, 
+         col3L = 0.2, 
+         col4L = 0.35,
+         col5L = 0.6,
+         col5R = 1,
+         wrapsize1=9,
+         wrapsize2=12,
+         wrapsize3=15,
+         wrapsize4=35,
+         wrapsize5=45)
+) {
+# dat is a data frame containing the hierarchically-organized information. 
+# column widths are set  based on expected content. Default values are what last worked for mine. 
+# note this function is written for 5 columns and isn't flexible to other options.
+
+# determine number of rows and sizes for project column
+projcoor <- data.frame(L=rep(col4L, times=nrow(dat)),
+                       R=rep(col5L, times=nrow(dat)),
+                       B=rep(NA, times=nrow(dat)),
+                       T=rep(NA, times=nrow(dat)))
+
+for (i in 1:nrow(projcoor)) {
+  projcoor[i,3] <- 1 - (i / nrow(projcoor)) # bottom coordinate
+  projcoor[i,4] <- 1 - ((i-1)/nrow(projcoor)) # top coordinate
+}
+
+# determine number of rows and sizes for project detail column
+detcoor <- data.frame(L=rep(col5L, times=nrow(dat)),
+                       R=rep(col5R, times=nrow(dat)),
+                       B=rep(NA, times=nrow(dat)),
+                       T=rep(NA, times=nrow(dat)))
+
+for (i in 1:nrow(detcoor)) {
+  detcoor[i,3] <- 1 - (i / nrow(detcoor)) # bottom coordinate
+  detcoor[i,4] <- 1 - ((i-1)/nrow(detcoor)) # top coordinate
+}
+
+
+# determine number of rows and sizes for  cluster column
+uniqueclus <- length(unique(dat$clus))
+cluscoor <- data.frame(L=rep(col3L, times=uniqueclus),
+                       R=rep(col4L, times=uniqueclus),
+                       B=rep(NA, times=uniqueclus),
+                       T=rep(NA, times=uniqueclus))
+
+for (i in 1:nrow(cluscoor)) {
+  if (i == 1) {
+    nproj.in.prevclus <- 0
+    ithclus <- unique(dat$clus)[i]
+    nproj.in.ithclus <-  length(dat$proj[dat$clus %in% ithclus])
+  } else {
+    prevclus <- unique(dat$clus)[1:(i-1)] # clusters previously populated 
+    nproj.in.prevclus <-  length(dat$proj[dat$clus %in% prevclus]) # number of projects within previously populated clusters
+    
+    ithclus <- unique(dat$clus)[i] # cluster to populate on ith iteration
+    nproj.in.ithclus <- length(dat$proj[dat$clus %in% ithclus]) # number of projects within this cluster
+  }
+    
+  cluscoor[i,3] <- 1 - ((nproj.in.ithclus + nproj.in.prevclus) / nrow(dat)) # bottom coordinate
+  
+  cluscoor[i,4] <- 1 - (nproj.in.prevclus/nrow(dat))  # top coordinate
+}
+
+# determine number of rows and sizes for  theme column
+uniquetheme <- length(unique(dat$theme))
+themecoor <- data.frame(L=rep(col2L, times=uniquetheme),
+                       R=rep(col3L, times=uniquetheme),
+                       B=rep(NA, times=uniquetheme),
+                       T=rep(NA, times=uniquetheme))
+
+for (i in 1:nrow(themecoor)) {
+  if (i == 1) {
+    nproj.in.prevtheme <- 0
+    iththeme <- unique(dat$theme)[i]
+    nproj.in.iththeme <-  length(dat$proj[dat$theme %in% iththeme])
+  } else {
+    prevtheme <- unique(dat$theme)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$proj[dat$theme %in% prevtheme]) # number of projects within previously populated themes
+    
+    iththeme <- unique(dat$theme)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$proj[dat$theme %in% iththeme]) # number of projects within this cluster
+  }
+    
+  themecoor[i,3] <- 1 - ((nproj.in.iththeme + nproj.in.prevtheme) / nrow(dat)) # bottom coordinate
+  
+  themecoor[i,4] <- 1 - (nproj.in.prevtheme/nrow(dat))  # top coordinate
+  
+}
+
+# determine number of rows and sizes for  domain column
+uniquedomain <- length(unique(dat$domainNAME))
+domaincoor <- data.frame(L=rep(col1L, times=uniquedomain),
+                       R=rep(col2L, times=uniquedomain),
+                       B=rep(NA, times=uniquedomain),
+                       T=rep(NA, times=uniquedomain))
+
+for (i in 1:nrow(domaincoor)) {
+  if (i == 1) {
+    nproj.in.prevdomain <- 0
+    ithdomain <- unique(dat$domainNAME)[i]
+    nproj.in.ithdomain <-  length(dat$proj[dat$domainNAME %in% ithdomain])
+  } else {
+    prevtheme <- unique(dat$theme)[1:(i-1)] # themes previously populated 
+    nproj.in.prevtheme <-  length(dat$proj[dat$theme %in% prevtheme]) # number of projects within previously populated themes
+    
+    iththeme <- unique(dat$theme)[i] # cluster to populate on ith iteration
+    nproj.in.iththeme <- length(dat$proj[dat$theme %in% iththeme]) # number of projects within this cluster
+  }
+    
+  domaincoor[i,3] <- 1 - ((nproj.in.ithdomain + nproj.in.prevdomain) / nrow(dat)) # bottom coordinate
+  
+  domaincoor[i,4] <- 1 - (nproj.in.prevdomain/nrow(dat))  # top coordinate
+  
+}
+
+allcoor <- rbind(domaincoor, themecoor, cluscoor, projcoor, detcoor)
+
+split.screen(as.matrix(allcoor))
+
+texttoprint <- c(as.character(dat$domainNAME[!duplicated(dat$domainNAME)]),
+as.character(dat$themeNAME[!duplicated(dat$themeNAME)]),
+as.character(dat$clusterNAME[!duplicated(dat$clusterNAME)]),
+as.character(dat$PROJECTname[!duplicated(dat$PROJECTname)]),
+as.character(dat$PROJECTpurpose[!duplicated(dat$PROJECTpurpose)]))
+
+wraplength <- c(rep(wrapsize1, times=length(unique(dat$domainNAME))), # domain
+                rep(wrapsize2, times=length(unique(dat$themeNAME))), #theme
+                rep(wrapsize3, times=length(unique(dat$clusterNAME))), #cluster
+                rep(wrapsize4, times=length(unique(dat$PROJECTname))), #project
+                rep(wrapsize5, times=length(unique(dat$PROJECTpurpose)))) #purpose
+
+for(i in 1:nrow(allcoor)) {
+ screen(i)
+ par(mar = c(0, 0, 0, 0))
+ text(.5,.5,paste(strwrap(texttoprint[i],wraplength[i]), collapse="\n"))
+ box()
+ }
+
+ close.screen(all.screens = TRUE)
+         }
+
+
+```
+
+
+### demo dataset 1
+``` {r}
+dat <- read.csv("other-useful-R-functions/demo.data.csv", header=T)
+```
+
