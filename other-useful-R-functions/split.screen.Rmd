@@ -211,7 +211,12 @@ F.hierarcplot <- function(dat,
          wrapsize2=12,
          wrapsize3=15,
          wrapsize4=35,
-         wrapsize5=45)
+         wrapsize5=45,
+         fontsize1=1, 
+         fontsize2=1,
+         fontsize3=1,
+         fontsize4=0.75,
+         fontsize5=0.5)
  {
 # dat is a data frame containing the hierarchically-organized information. 
 # column coordinates are set  based on expected content. Default values are what last worked for mine. 
@@ -283,7 +288,7 @@ for (i in 1:nrow(themecoor)) {
     nproj.in.prevtheme <-  length(dat$PROJECTname[dat$themeNAME %in% prevtheme]) # number of projects within previously populated themes
     
     iththeme <- unique(dat$themeNAME)[i] # cluster to populate on ith iteration
-    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
+    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this theme
   }
     
   themecoor[i,3] <- 1 - ((nproj.in.iththeme + nproj.in.prevtheme) / nrow(dat)) # bottom coordinate
@@ -304,11 +309,11 @@ for (i in 1:nrow(domaincoor)) {
     ithdomain <- unique(dat$domainNAME)[i]
     nproj.in.ithdomain <-  length(dat$PROJECTname[dat$domainNAME %in% ithdomain])
   } else {
-    prevdomain <- unique(dat$theme)[1:(i-1)] # themes previously populated 
-    nproj.in.prevtheme <-  length(dat$PROJECTname[dat$domainNAME %in% prevdomain]) # number of projects within previously populated domains
+    prevdomain <- unique(dat$domainNAME)[1:(i-1)] # themes previously populated 
+    nproj.in.prevdomain <-  length(dat$PROJECTname[dat$domainNAME %in% prevdomain]) # number of projects within previously populated domains
     
     ithdomain <- unique(dat$domainNAME)[i] # cluster to populate on ith iteration
-    nproj.in.iththeme <- length(dat$PROJECTname[dat$themeNAME %in% iththeme]) # number of projects within this cluster
+    nproj.in.ithdomain <- length(dat$PROJECTname[dat$domainNAME %in% ithdomain]) # number of projects within this domain
   }
     
   domaincoor[i,3] <- 1 - ((nproj.in.ithdomain + nproj.in.prevdomain) / nrow(dat)) # bottom coordinate
@@ -333,10 +338,17 @@ wraplength <- c(rep(wrapsize1, times=length(unique(dat$domainNAME))), # domain
                 rep(wrapsize4, times=length(unique(dat$PROJECTname))), #project
                 rep(wrapsize5, times=length(unique(dat$PROJECTpurpose)))) #purpose
 
+fontsize <- c(rep(fontsize1, times=length(unique(dat$domainNAME))), # domain
+                rep(fontsize2, times=length(unique(dat$themeNAME))), #theme
+                rep(fontsize3, times=length(unique(dat$clusterNAME))), #cluster
+                rep(fontsize4, times=length(unique(dat$PROJECTname))), #project
+                rep(fontsize5, times=length(unique(dat$PROJECTpurpose)))) #purpose
+
+
 for(i in 1:nrow(allcoor)) {
  screen(i)
  par(mar = c(0, 0, 0, 0))
- text(.5,.5,paste(strwrap(texttoprint[i],wraplength[i]), collapse="\n"))
+ text(.5,.5,paste(strwrap(texttoprint[i],wraplength[i]), collapse="\n"), cex=fontsize[i])
  box()
  }
 
@@ -352,8 +364,8 @@ F.hierarcplot(dat)
 ```
 
 ### demo dataset 2
-``` {r}
-dat <- read.csv("other-useful-R-functions/demo.data.csv", header=T)
+``` {r, eval=T, fig.height=11, fig.width=8.5, dpi=300, dev="tiff"}
+dat <- read.csv("demo.data.csv")
 F.hierarcplot(dat)
 ```
 
