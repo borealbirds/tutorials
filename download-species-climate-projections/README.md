@@ -6,9 +6,9 @@ and future predictions for each species listed in the page.
 The `ROOT` variable defines where the results will be placed.
 The script will create folders, such as `ROOT/SPECIES/current` and `ROOT/SPECIES/future`, with raster files etc in each.
 
-The data is stored on AWS S3, which has preset [quota](https://docs.developer.amazonservices.com/en_DE/dev_guide/DG_Throttling.html) 
-for making requests. If you receive '403 Forbidden' HTTP status, you should wait an hour or so, and run the `for` loop. 
-The index `i` functions as a checkpoint, so that you can continue with the downloads from where it was last left off.
+Some species (GCFL, PIWA) are giving a '403 Forbidden' HTTP status, not quite sure why. 
+The index `i` functions as a checkpoint, so that you can continue with the downloads from where it was last left off,
+skipping that species.
 
 ```R
 library(rvest)
