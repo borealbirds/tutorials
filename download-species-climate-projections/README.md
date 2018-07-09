@@ -6,6 +6,10 @@ and future predictions for each species listed in the page.
 The `ROOT` variable defines where the results will be placed.
 The script will create folders, such as `ROOT/SPECIES/current` and `ROOT/SPECIES/future`, with raster files etc in each.
 
+The data is stored on AWS S3, which has preset [quota](https://docs.developer.amazonservices.com/en_DE/dev_guide/DG_Throttling.html) 
+for making requests. If you receive '403 Forbidden' HTTP status, you should wait an hour or so, and run the `for` loop. 
+The index `i` functions as a checkpoint, so that you can continue with the downloads from where it was last left off.
+
 ```R
 library(rvest)
 library(dplyr)
@@ -25,7 +29,9 @@ names(links_future) <- get_spp(links_future)
 stopifnot(all(names(links_current) == names(links_future)))
 
 SPP <- names(links_current)
-for (i in SPP) {
+i <- SPP[1] # i is also a checkpoint
+
+for (i in SPP[which(SPP == i):length(SPP)]) {
     cat("\n\n--->>> Grabbing", i, "for ya' <<<---\n")
     flush.console()
     if (!dir.exists(file.path(ROOT, i)))
@@ -43,4 +49,5 @@ for (i in SPP) {
     unzip(file.path(ROOT, i, "future", "tmp.zip"), exdir=file.path(ROOT, i, "future"))
     unlink(file.path(ROOT, i, "future", "tmp.zip"))
 }
+
 ```
