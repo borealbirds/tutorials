@@ -6,7 +6,7 @@ and future predictions for each species listed in the page.
 The `ROOT` variable defines where the results will be placed.
 The script will create folders, such as `ROOT/SPECIES/current` and `ROOT/SPECIES/future`, with raster files etc in each.
 
-Some species (GCFL, PIWA) are giving a '403 Forbidden' HTTP status, not quite sure why. 
+Some species (GCFL, PIWA, WCSP) are giving a '403 Forbidden' HTTP status, not quite sure why. 
 The index `i` functions as a checkpoint, so that you can continue with the downloads from where it was last left off,
 skipping that species.
 
